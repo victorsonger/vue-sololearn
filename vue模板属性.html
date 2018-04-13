@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue模板属性</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<style>
+.class1{
+  background: #444;
+  color: #eee;
+}
+</style>
+</head>
+<body>
+<div id="app">
+   <label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+   <br><br>
+   <div v-bind:class="{'class1':class1}"> <!--当没有选中input复选框时，这里"{'class1':class1}"中的第二个class1是不存在的，即不会对前面的class1属性有任何影响；当复选框选中后，因为绑定，则第二个class1生效，其值为false，使得前面的class1属性失效 -->
+   	dadadadada
+   </div>
+</div>
+
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		class1:false
+	}
+})
+    
+</script>
+</body>
+</html>

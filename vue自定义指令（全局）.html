@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全局指令</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+   <p>input自动获得焦点</p>
+   <input v-focus>
+</div>
+
+<script>
+Vue.directive('focus',{
+	inserted: function(el){
+		el.focus()
+	}
+})
+new Vue({
+	el:'#app',
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue表单（全选）</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+   <p>
+   	全选：
+   </p>
+   <input type="checkbox" id="checkbox" v-model="checked" @click="changeAllChecked()">
+   <label for="checkbox">{{checked}}</label>
+
+   <p>多个复选框</p>
+   <input type="checkbox" id="aaaaa" value="AAAAA" v-model="checkedNames">
+   <label for="aaaaa">AAAAA</label>
+   <input type="checkbox" id="bbbbb" value="BBBBB" v-model="checkedNames">
+   <label for="bbbbb">BBBBB</label>
+   <input type="checkbox" id="ccccc" value="CCCCC" v-model="checkedNames">
+   <label for="ccccc">CCCCC</label>
+   <br>
+   <span> 选择的值为：{{checkedNames}}</span>
+
+</div>
+
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		checked: false,
+		checkedNames:[],
+		checkedArr: ["AAAAA","BBBBB","CCCCC"]
+	},
+
+	methods:{
+		changeAllChecked:function(){
+			if (this.checked){
+				this.checkedNames = this.checkedArr
+			} else {
+				this.checkedNames = []
+			}
+		}
+	},
+	watch:{
+		"checkedNames": function() {
+			if (this.checkedNames.length == this.checkedArr.length) {  //为什么这里要用.length==而不是直接用=呢？因为数组如果是包含关系，那么它们也会被判断为是相等的。这样的话下面的多选框只要选一个就会被判断为相等，从而执行全选
+				this.checked = true
+			} else {
+				this.checked = false
+			}
+		}
+	}
+})
+</script>
+</body>
+</html>

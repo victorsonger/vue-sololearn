@@ -1,0 +1,28 @@
+<!--Vue.js 都提供了完全的 JavaScript 表达式支持。-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue模板表达式</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+   {{1+3}}<br>
+   {{ok?'yes':'no'}}<br>
+   {{message.split('').reverse().join('')}}
+   <div v-bind:id="'list'+id">雷切</div>
+</div>
+
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		ok:true,
+		message: 'kiana',
+		id:1
+	}
+})    
+</script>
+</body>
+</html>

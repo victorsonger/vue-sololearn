@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue循环迭代对象</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+   <ul>
+   	<li v-for="(value,key,index) in object">
+   		{{index}}.{{key}}:{{value}}
+   	</li>
+   </ul>
+</div>
+
+<script>
+new Vue({
+	el:'#app',
+	data: {
+		object:{
+			姓名:'victor',
+			学校:'southeast',
+			专业:'el'
+		}
+	}
+})
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue监听</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="jitingkuang">
+	千米： <input type="text" v-model = "kilometers">
+	米： <input type="text" v-model = "meters">
+   
+</div>
+<div id="info"></div>
+<script>
+var vm = new Vue({
+	el:'#jitingkuang',
+	data:{
+		kilometers:0,
+		meters:0
+	},
+	methods:{},
+	computed:{},
+
+	watch: {
+		kilometers:function(val){
+			this.kilometers = val;
+			this.meters= val*1000;
+
+		},
+		meters:function(val){
+			this.kilometers = val/1000;
+			this.meters = val;
+		}
+	}
+
+
+});
+  //下面的 $watch 是一个实例方法
+vm.$watch('kilometers', function(newValue,oldValue){
+	document.getElementById("info").innerHTML = "修改前的值：" + oldValue + "修改后的值" + newValue;
+})
+</script>
+</body>
+</html>
